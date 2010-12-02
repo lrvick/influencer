@@ -70,16 +70,12 @@ INSTALLED_APPS = (
     'kral',
 )
 
-#User agent to fake when scraping data
-USER_AGENT="Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.7.6) Gecko/20050512 Firefox"
-
 #AMPQ Server Info
 BROKER_HOST = "127.0.0.1"
 BROKER_PORT = 5672
 BROKER_VHOST = "/"
 BROKER_USER = "guest"
 BROKER_PASSWORD = "guest"
-CELERY_IMPORTS = ("kral.plugins.twitter.tasks",)
 
 #Load installation specific settings/passwords from external file with restrictive permissions
 execfile(os.path.join(PROJECT_PATH,'.private-settings'))
