@@ -80,4 +80,6 @@ BROKER_PASSWORD = "guest"
 #Load installation specific settings/passwords from external file with restrictive permissions
 execfile(os.path.join(PROJECT_PATH,'.private-settings'))
 
+#KRALRS_ENABLED=['Facebook']
+
 # vim: ai ts=4 sts=4 et sw=4
