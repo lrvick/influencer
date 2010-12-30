@@ -1,0 +1,6 @@
+Django
+South
+celery
+django-celery
+psycopg2
+pycurl
