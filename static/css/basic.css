@@ -61,6 +61,13 @@ body {font-family: 'Molengo', arial, serif;
 .result{background-color: transparent; background-repeat: no-repeat;
 	background-position: 10px right; color: #CCCCCC; padding: 22px;
 	font-size: 12px;}
+.resultwrapper:hover .txt-inner {position:absolute; background: #23050C;
+	font-size: 110%; display: block; height: auto;
+	-moz-box-shadow: 1px 1px 3px #111;
+	-webkit-box-shadow: 1px 1px 3px #111;
+	box-shadow: 1px 1px 3px #111;
+	border: 1px solid #230008;}
+.txt-inner {width: 242px;}
 .twitter{background-image: url(feeds/twitter.png);}
 .facebook{background-image: url(feeds/facebook.png);}
 .result img {border: 0; height: 50; width: 50; margin: 6px 4px 0 6px;}
