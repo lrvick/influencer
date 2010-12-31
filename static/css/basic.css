@@ -30,12 +30,22 @@ body {font-family: 'Molengo', arial, serif;
 #form button img {border: 0; padding: 0;}
 #form button:hover {cursor: pointer;}
 
+/*
 #vesselswrapper{padding-top: 178px; width: 100%; height: 138px;}
-#vessels {width: 183px; margin: 0 auto;}
-.vessel {background: transparent url(bubbles.png) no-repeat; 
-	height: 138px; width: 69px;}
-#vessel-left {margin-left: 2px; background-position: 0 10px;}
-#vessel-right {background-position: 0 130px;}
+#vessels {width: 181px; margin: 0 auto;}
+.vessel {background: transparent url(bubbles.png) no-repeat top left; 
+	height: 138px; width: 66px; background-position: 0 0;}
+#vessel-right {margin-right:4px;}
+*/
+#vesselswrapper{padding-top: 178px; width: 100%; height: 138px;}
+#vessels {width: 181px; margin: 0 auto;}
+.vessel {background: transparent;
+	height: 138px; width: 67px; background-position: 0 0;}
+.fluid {background: transparent url(bubbles.png) no-repeat top left; 
+	height: 10px; margin-top: 128px; width 67px;}
+#fluid-right{background-position: top right;}
+
+
 
 #numberwrapper{padding-top: 100px; width: 100%;}
 #number {margin: 0 auto; font-size: 75px; color: #CCCCCC; 
@@ -59,5 +69,6 @@ body {font-family: 'Molengo', arial, serif;
 .result div, .result img {float: left; height: 50px; margin-top: 6px;}
 .result .txt {/*width: 188px;*/padding-left: 6px; width:242px; height: 50px; 
 		overflow: hidden}
-.result .time {line-height: 50px; width: 45px;}
+.result .time {width: 45px; font-size: 90%; padding-top: 8px; 
+                text-align: right;}
 .gap{margin-bottom: 180px;}
