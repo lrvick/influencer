@@ -11,9 +11,12 @@ function update(){
 			if($("#"+id).length > 0){return 0;}
 			item.plugin = plugin;
 		item.id = id;
-		time = item.fields.date;
-		if(!time){time = item.fields.created_time;}
-		item.time = time
+		d = item.fields.date;
+		if(!d){d = item.fields.created_time;}
+		d = new Date(d);
+		item.time = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+
+				d.getDate()+'T'+(d.getHours()+1)+':'+
+				d.getMinutes()+':'+d.getSeconds()+'Z';
 		$(t).prepend(renderer.render(item));
 		$("#"+id).slideDown("slow");
 		$("#"+id+" .time").timeago();
@@ -33,23 +36,22 @@ function update(){
 		}
 	}
 	function call_updates(){
-		
 		q = $(this).attr("q");
 		if(!q){return;}
 		for(i = 0; i < plugins.length; ++i){
 			url = "/feeds/"+plugins[i]+"/"+q+".json";
 			$.getJSON(url, process_results(plugins[i], this));
 		}
-	    count = max(parseInt($(this).attr("count"))-1,0);
+	    	count = max(parseInt($(this).attr("count"))-1,0);
 		$(this).attr("count", count);
-        height = 6*min(count, 20)+10;
+        	height = 8*min(count, 15)+10;
 		left = $(this).hasClass("left")
-        selector = left?"#fluid-left":"#fluid-right";
-        //height of the tube is 138
+        	selector = left?"#fluid-left":"#fluid-right";
+        	//height of the tube is 138
 		$(selector).animate({height:height+"px", 
                             marginTop:(140-height)+"px"}, 1000);
-    }
-    $(".resultlist").each(call_updates);
+    	}
+	$(".resultlist").each(call_updates);
 }
 
 //Sets the "q" attribute on the two search queries.
