@@ -30,27 +30,25 @@ body {font-family: 'Molengo', arial, serif;
 #form button img {border: 0; padding: 0;}
 #form button:hover {cursor: pointer;}
 
-/*
-#vesselswrapper{padding-top: 178px; width: 100%; height: 138px;}
-#vessels {width: 181px; margin: 0 auto;}
-.vessel {background: transparent url(bubbles.png) no-repeat top left; 
-	height: 138px; width: 66px; background-position: 0 0;}
-#vessel-right {margin-right:4px;}
-*/
 #vesselswrapper{padding-top: 178px; width: 100%; height: 138px;}
 #vessels {width: 181px; margin: 0 auto;}
 .vessel {background: transparent;
 	height: 138px; width: 67px; background-position: 0 0;}
-.fluid {background: transparent url(bubbles.png) no-repeat bottom left; 
+.fluid {background: transparent url(bubbles.png) no-repeat top left; 
 	height: 10px; margin-top: 128px; width 67px;}
-#fluid-right{background-position: bottom right;}
-
-
+#fluid-right{background-position: top right;}
 
 #numberwrapper{padding-top: 100px; width: 100%;}
-#number {margin: 0 auto; font-size: 75px; color: #CCCCCC; 
+#numbers {margin: 0 auto; width: 200px;}
+.number a {font-size: 50px; color: #999999; 
 	font-weight: 900; text-align: center;
-	background: transparent; text-shadow: 1px 1px 3px #888888;}
+	background: transparent; text-shadow: 1px 1px 3px #888888;
+	text-decoration: none;}
+.hint {display: none; background: black; font-size: 20px;
+    width:120px; text-shadow: none; text-align: left;
+    background-color:#000000; color:#999999; padding: 10px;}
+.number a:hover .hint {display:block; position:absolute;}
+.hiddencount {display: none;}
 
 #resultlistswrapper {padding-top: 20px; width: 100%;}
 #resultlists{width: 980px; margin: 0 auto;}

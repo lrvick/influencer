@@ -1,8 +1,18 @@
 var plugins = ["facebook", "twitter"];
 var renderer = new EJS({url:"/static/js/result.ejs"});
 
+var timeupdate = 0;
+
 function max(a, b){return a > b ? a : b;}
 function min(a, b){return a > b ? b : a;}
+function increment(selector, amount, kwargs){
+	e = $(selector)
+	i = parseInt(e.html()) + amount;
+	if(kwargs && kwargs.max){i = max(i, kwargs.max);}
+	if(kwargs && kwargs.min){i = min(i, kwargs.min);}
+	e.html(i);
+	return i
+}
 
 function update(){
 	function do_display(plugin, item, t){
@@ -15,11 +25,12 @@ function update(){
 		if(!d){d = item.fields.created_time;}
 		d = new Date(d);
 		item.time = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+
-				d.getDate()+'T'+(d.getHours()+1)+':'+
+				d.getDate()+'T'+d.getHours()+':'+
 				d.getMinutes()+':'+d.getSeconds()+'Z';
+		item.time_text = $.timeago(item.time);
+		console.log(item.time, "|", d.toString());
 		$(t).prepend(renderer.render(item));
 		$("#"+id).slideDown("slow");
-		$("#"+id+" .time").timeago();
 		$(t).children().removeClass("gap")
 			.slice(9,10).addClass("gap");
 		$(t).children().slice(50).remove();
@@ -31,8 +42,13 @@ function update(){
 			for(i=data.length-1; i >=0; --i){
 				changes += do_display(plugin, data[i], t);
 			}
-			count = parseInt($(t).attr("count"));
-            		$(t).attr("count", min(count+changes, 30));
+			left = $(t).hasClass("left");
+			increment(left?"#total-left":"#total-right", changes)
+			selector = left?"#numbers .left .":"#numbers .right .";
+			increment(selector+plugin+"-count .counter", changes);
+			increment(left?"#vessel-left-count":
+						"#vessel-right-count", changes,
+							{min: 20})
 		}
 	}
 	function call_updates(){
@@ -42,16 +58,24 @@ function update(){
 			url = "/feeds/"+plugins[i]+"/"+q+".json";
 			$.getJSON(url, process_results(plugins[i], this));
 		}
-	    	count = max(parseInt($(this).attr("count"))-1,0);
-		$(this).attr("count", count);
+		left = $(this).hasClass("left");
+		selector = left?"#vessel-left-count":"#vessel-right-count";
+		count = increment(selector, -2, {max: 0});
         	height = 8*min(count, 15)+10;
-		left = $(this).hasClass("left")
         	selector = left?"#fluid-left":"#fluid-right";
         	//height of the tube is 138
 		$(selector).animate({height:height+"px", 
                             marginTop:(140-height)+"px"}, 1000);
     	}
+	function update_time(){
+		$(this).html($.timeago($(this).attr("title")));
+	}
 	$(".resultlist").each(call_updates);
+	++timeupdate;
+	if(timeupdate > 4){
+		timeupdate = 0;
+		$(".time").each(update_time);
+	}
 }
 
 //Sets the "q" attribute on the two search queries.
@@ -70,6 +94,7 @@ function form_button(){
 	}
 	$("#result-left").attr("q", searches[0]);
 	$("#result-right").attr("q", searches[1]);
+	$(".counter").html("0");
     	$(".resultlist").each(function(){$(this).children().remove();});
 }
 
