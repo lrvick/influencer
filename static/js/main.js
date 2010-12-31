@@ -8,8 +8,12 @@ function min(a, b){return a > b ? b : a;}
 function increment(selector, amount, kwargs){
 	e = $(selector)
 	i = parseInt(e.html()) + amount;
-	if(kwargs && kwargs.max){i = max(i, kwargs.max);}
-	if(kwargs && kwargs.min){i = min(i, kwargs.min);}
+	if(kwargs && kwargs.max != undefined){
+		i = max(i, kwargs.max);
+	}
+	if(kwargs && kwargs.min != undefined){
+		i = min(i, kwargs.min);
+	}
 	e.html(i);
 	return i
 }
@@ -48,7 +52,7 @@ function update(){
 			increment(selector+plugin+"-count .counter", changes);
 			increment(left?"#vessel-left-count":
 						"#vessel-right-count", changes,
-							{min: 20})
+							{min: 15})
 		}
 	}
 	function call_updates(){
@@ -60,7 +64,7 @@ function update(){
 		}
 		left = $(this).hasClass("left");
 		selector = left?"#vessel-left-count":"#vessel-right-count";
-		count = increment(selector, -2, {max: 0});
+		count = increment(selector, -1, {max: 0});
         	height = 8*min(count, 15)+10;
         	selector = left?"#fluid-left":"#fluid-right";
         	//height of the tube is 138
