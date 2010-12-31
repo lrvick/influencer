@@ -41,9 +41,9 @@ body {font-family: 'Molengo', arial, serif;
 #vessels {width: 181px; margin: 0 auto;}
 .vessel {background: transparent;
 	height: 138px; width: 67px; background-position: 0 0;}
-.fluid {background: transparent url(bubbles.png) no-repeat top left; 
+.fluid {background: transparent url(bubbles.png) no-repeat bottom left; 
 	height: 10px; margin-top: 128px; width 67px;}
-#fluid-right{background-position: top right;}
+#fluid-right{background-position: bottom right;}
 
 
 
