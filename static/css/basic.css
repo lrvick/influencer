@@ -19,18 +19,18 @@ body {font-family: 'Molengo', arial, serif;
 #header h3 {font-size: 13px;color: #231F2F;}
 
 #formwrapper {padding-top: 274px; width: 100%;}
-#form {margin: 0 auto; height: 54px; width: 727px;}
+#form {margin: 0 auto; height: 160px; width: 727px;}
 #form input {border: 0; margin: 0; width: 303px; display: block; 
 		height: 52px; font-size: 38px; line-height: 42px;
 		padding-bottom: 5px;
 		font-weight: 900; text-align: center; color: #222;
 	background: transparent; text-shadow: 1px 1px 3px #888888;}
-#form button {background: transparent; display: block;
-		padding: 50px 0 0; border:0; margin-left: 275px;}
+#form button {background: transparent; display: block; clear: both;
+		padding: 50px 0 0; border:0; margin: 0 278px;}
 #form button img {border: 0; padding: 0;}
 #form button:hover {cursor: pointer;}
 
-#vesselswrapper{padding-top: 178px; width: 100%; height: 138px;}
+#vesselswrapper{padding-top: 69px; width: 100%; height: 138px;}
 #vessels {width: 181px; margin: 0 auto;}
 .vessel {background: transparent;
 	height: 138px; width: 67px; background-position: 0 0;}
@@ -45,7 +45,7 @@ body {font-family: 'Molengo', arial, serif;
 	background: transparent; text-shadow: 1px 1px 3px #888888;
 	text-decoration: none;}
 .hint {display: none; background: black; font-size: 20px;
-    width:120px; text-shadow: none; text-align: left;
+    width:160px; text-shadow: none; text-align: left;
     background-color:#000000; color:#999999; padding: 10px;}
 .number a:hover .hint {display:block; position:absolute;}
 .hiddencount {display: none;}

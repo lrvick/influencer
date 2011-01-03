@@ -1,13 +1,17 @@
 var plugins = ["facebook", "twitter"];
 var renderer = new EJS({url:"/static/js/result.ejs"});
-
+var monthMap = {"01": "Jan", "02": "Feb", "03":"Mar", "04":"Apr", "05":"May",
+		"06":"Jun", "07":"Jul", "08":"Aug", "09":"Sep", "10":"Oct",
+		"11":"Nov", "12":"Dec"}
 var timeupdate = 0;
 
 function max(a, b){return a > b ? a : b;}
 function min(a, b){return a > b ? b : a;}
 function increment(selector, amount, kwargs){
 	e = $(selector)
-	i = parseInt(e.html()) + amount;
+	i = parseInt(e.html());
+	if(isNaN(i)){i = 0;}
+	i += amount;
 	if(kwargs && kwargs.max != undefined){
 		i = max(i, kwargs.max);
 	}
@@ -27,12 +31,11 @@ function update(){
 		item.id = id;
 		d = item.fields.date;
 		if(!d){d = item.fields.created_time;}
-		d = new Date(d);
-		item.time = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+
-				d.getDate()+'T'+d.getHours()+':'+
-				d.getMinutes()+':'+d.getSeconds()+'Z';
+		date_split = d.split(" ");
+		date_split.splice(1, 0, "T")
+		date_split.push("Z");
+		item.time = date_split.join("");
 		item.time_text = $.timeago(item.time);
-		console.log(item.time, "|", d.toString());
 		$(t).prepend(renderer.render(item));
 		$("#"+id).slideDown("slow");
 		$(t).children().removeClass("gap")
@@ -49,7 +52,8 @@ function update(){
 			left = $(t).hasClass("left");
 			increment(left?"#total-left":"#total-right", changes)
 			selector = left?"#numbers .left .":"#numbers .right .";
-			increment(selector+plugin+"-count .counter", changes);
+			increment(selector+plugin+"-count span.counter", 
+					changes);
 			increment(left?"#vessel-left-count":
 						"#vessel-right-count", changes,
 							{min: 15})
