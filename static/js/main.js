@@ -40,7 +40,7 @@ function update(){
 		$("#"+id).slideDown("slow");
 		$(t).children().removeClass("gap")
 			.slice(9,10).addClass("gap");
-		$(t).children().slice(50).remove();
+		$(t).children().slice(150).remove();
 		return 1;
 	}
 	function process_results(plugin, t){

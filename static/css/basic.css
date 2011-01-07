@@ -1,5 +1,5 @@
 body {font-family: 'Molengo', arial, serif; 
-	background: #000000 url(bg.gif) no-repeat center top;}
+	background: #000000 url(bg.png) no-repeat center top;}
 
 .left{float: left;}
 .right{float: right;}
@@ -44,11 +44,14 @@ body {font-family: 'Molengo', arial, serif;
 	font-weight: 900; text-align: center;
 	background: transparent; text-shadow: 1px 1px 3px #888888;
 	text-decoration: none;}
-.hint {display: none; background: black; font-size: 20px;
-    width:160px; text-shadow: none; text-align: left;
-    background-color:#000000; color:#999999; padding: 10px;}
+.hint {display: none; font-size: 20px;
+    width:196px; height:123px; text-shadow: none; text-align: left;
+    background: transparent url(results_total.png) top left no-repeat;
+    color:#999999; padding: 20px 10px 10px;}
 .number a:hover .hint {display:block; position:absolute;}
 .hiddencount {display: none;}
+.hint div {height: 45px; margin: 0 0 0 80px; text-align: right; 
+		font-size: 25px; width: 80px;}
 
 #resultlistswrapper {padding-top: 20px; width: 100%;}
 #resultlists{width: 980px; margin: 0 auto;}
