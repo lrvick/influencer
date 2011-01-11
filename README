@@ -1,26 +1,25 @@
- Kral < http://github.com/UdderWeb/kral >
+ Influencer < http://github.com/UdderWeb/influencer >
 
-WHAT IS KRAL?
-	A social media crawling engine, built on Django. 
-    Aims to provide a framework for rapidly collect data from social networks
-    based on defined search criteria. Built to be a foundation for a wide 
-    range of social applications, and to bring accountability  and public 
-    to the way in which data is collected and promote others to get involved
-    to help us collect as much data as possible with the fewest resources.
+WHAT IS INFLUENCER?
+	A simple fun application to compare two sets of keywords to each other
+    based on their requency of use across social popular networks.
+    
+    It does this by making use of the Kral engine, and can be considered
+    a sample application for one potential use of this engine.
+
+    More information on the Kral engine can be found at:
+    
+    <  https://github.com/UdderWeb/kral > 
 
 CURRENT FEATURES:
 
- * Ability to harvest user information, and posts from Twitter and 
+ * Ability to accept 2 keywords and stream side-by-side social data for them 
 
- * Ability to expand all short-urls into full real URLs.
-
- * Modular design. Easily add or disable "kraling" for different social networks.
+ * Ability to compare frequency of mentions via two tubes of 'goo'
 
 NOTES
 
-  Many more features coming soon as this project is under active development.
-
-	This is by no means production-ready code. Do not actually use it in
-	production unless you wish to be eaten by a grue.
+    This uses a frozen snapshot of kral at known working commits, may not work
+    with the latest commits of kral.
 
 	Questions/Comments? Please check us out on IRC via irc://udderweb.com/#uw
