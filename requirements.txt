@@ -1,5 +1,4 @@
 Django
-South
 celery
 django-celery
 psycopg2

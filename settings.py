@@ -65,7 +65,6 @@ INSTALLED_APPS = (
 #    'django.contrib.messages',
 #    'django.contrib.comments',
 #    'django.contrib.admin',
-    'south',
     'djcelery',
     'kral',
 )
